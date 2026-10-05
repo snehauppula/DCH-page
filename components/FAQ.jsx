@@ -22,12 +22,11 @@ export default function FAQ() {
           </div>
           <button className="btn btn-primary" onClick={() => openJoin()}>Still have questions? <Icon name="arrow" size={18} /></button>
         </Reveal>
-        <div className="faq-list">
+        <Reveal className="faq-list" stagger={0.07} y={24}>
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <motion.div key={f.q} className={`qa${isOpen ? " open" : ""}`} initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
-                <span className="n">0{i + 1}</span>
+              <div key={f.q} className={`qa${isOpen ? " open" : ""}`}>
                 <button onClick={() => setOpen(isOpen ? -1 : i)} aria-expanded={isOpen}>
                   <span>{f.q}</span>
                   <span className="chev"><Icon name="chevron" size={18} /></span>
@@ -39,10 +38,10 @@ export default function FAQ() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,15 +1,22 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { animate, useInView } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Counter({ to }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
   const [v, setV] = useState(0);
   useEffect(() => {
-    if (!inView) return;
-    const c = animate(0, to, { duration: 1.8, ease: "easeOut", onUpdate: (n) => setV(Math.round(n)) });
-    return () => c.stop();
-  }, [inView, to]);
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { setV(to); return; }
+    const o = { n: 0 };
+    const tween = gsap.to(o, {
+      n: to, duration: 1.8, ease: "power2.out", paused: true,
+      onUpdate: () => setV(Math.round(o.n)),
+    });
+    const st = ScrollTrigger.create({ trigger: ref.current, start: "top 95%", once: true, onEnter: () => tween.play() });
+    return () => { st.kill(); tween.kill(); };
+  }, [to]);
   return <b ref={ref}>{v.toLocaleString()}</b>;
 }

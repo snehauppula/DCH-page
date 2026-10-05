@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { gsap } from "gsap";
 import { useJoin } from "./JoinProvider";
 import LogoCircle from "./LogoCircle";
 import Icon from "./Icon";
@@ -18,6 +18,13 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { open: openJoin } = useJoin();
+  const ref = useRef(null);
+
+  useLayoutEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = gsap.from(ref.current, { y: -90, duration: 0.7, ease: "power3.out" });
+    return () => t.kill();
+  }, []);
 
   useEffect(() => {
     if (pathname !== "/") { setActive(""); return; }
@@ -34,7 +41,7 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <motion.header className={`nav${scrolled ? " scrolled" : ""}`} initial={{ y: -90 }} animate={{ y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }}>
+    <header ref={ref} className={`nav${scrolled ? " scrolled" : ""}`}>
       <div className="nav-inner">
         <Link href="/" className="logo">
           <LogoCircle className="logo-sm" />
@@ -43,12 +50,12 @@ export default function Navbar() {
         <button className="burger" onClick={() => setOpen(!open)} aria-label="Menu"><Icon name={open ? "close" : "menu"} size={26} /></button>
         <nav className={`links${open ? " open" : ""}`} onClick={() => setOpen(false)}>
           {links.map(([label, id]) => (
-            <Link key={id} href={id === "home" ? "/" : `/#${id}`} className={active === id ? "active" : ""}>{label}{active === id && <motion.span layoutId="nav-ul" className="ul" transition={{ type: "spring", stiffness: 420, damping: 34 }} />}</Link>
+            <Link key={id} href={id === "home" ? "/" : `/#${id}`} className={active === id ? "active" : ""}>{label}</Link>
           ))}
           <ThemeToggle />
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="btn btn-primary" onClick={() => openJoin()}>Join the Hub</motion.button>
+          <button className="btn btn-primary" onClick={() => openJoin()}>Join the Hub</button>
         </nav>
       </div>
-    </motion.header>
+    </header>
   );
 }

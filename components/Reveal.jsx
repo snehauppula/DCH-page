@@ -1,17 +1,23 @@
 "use client";
-import { motion } from "framer-motion";
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function Reveal({ children, delay = 0, y = 28, x = 0, className = "", ...rest }) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y, x }}
-      whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-      {...rest}
-    >
-      {children}
-    </motion.div>
-  );
+gsap.registerPlugin(ScrollTrigger);
+
+// Scroll-triggered fade/slide. With `stagger`, the direct children animate one after another instead of the wrapper.
+export default function Reveal({ children, delay = 0, y = 28, x = 0, stagger = 0, className = "", ...rest }) {
+  const ref = useRef(null);
+  useLayoutEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ctx = gsap.context(() => {
+      const targets = stagger ? ref.current.children : ref.current;
+      gsap.from(targets, {
+        opacity: 0, y, x, duration: 0.8, delay, ease: "power3.out", stagger,
+        scrollTrigger: { trigger: ref.current, start: "top 88%", once: true },
+      });
+    }, ref);
+    return () => ctx.revert();
+  }, [y, x, delay, stagger]);
+  return <div ref={ref} className={className} {...rest}>{children}</div>;
 }
