@@ -10,13 +10,13 @@ export default function Careers() {
         <Reveal className="head">
           <span className="eyebrow center">CAREERS</span>
           <h2>Grow <span className="grad">with us</span></h2>
-          <p className="muted">Join a friendly, remote team building the home for digital creators.</p>
+          <p className="muted">Join our growing team building software that powers real businesses.</p>
         </Reveal>
         <Reveal className="grid jobs" stagger={0.1} y={24}>
           {jobs.map((j) => (
             <div key={j.title} className="job">
               <h4>{j.title}</h4><p>{j.place}</p>
-              <a href={`mailto:hello@digitalcreatorshub.com?subject=${encodeURIComponent("Application: " + j.title)}`}>Apply <Icon name="arrow" size={16} /></a>
+              <a href={`mailto:hello@hfcsoftware.com?subject=${encodeURIComponent("Application: " + j.title)}`}>Apply <Icon name="arrow" size={16} /></a>
             </div>
           ))}
         </Reveal>

@@ -8,15 +8,15 @@ export default function WhyUs() {
     <section className="section why" id="why">
       <div className="container why-grid">
         <Reveal x={-40} y={0}>
-          <span className="eyebrow">WHY CREATORS TRUST US</span>
-          <h2 className="big">Why Choose <span className="grad">Digital Creators Hub?</span></h2>
-          <p className="muted why-p">We&apos;re building the community we wished existed — one place where creators of every craft share knowledge, find collaborators and turn passion into a sustainable career.</p>
+          <span className="eyebrow">WHY BUSINESSES TRUST US</span>
+          <h2 className="big">Why Choose <span className="grad">HFC Software?</span></h2>
+          <p className="muted why-p">We&apos;ve spent years building software specifically for the food and service industry — not generic tools repurposed for restaurants, but purpose-built products that understand your workflow.</p>
         </Reveal>
 
         <Reveal className="why-list" stagger={0.1} y={24}>
           {whyStats.map((s, i) => (
             <div key={s.rest} className="why-card">
-              <span className="step-num"><strong>{String(i + 1).padStart(2, '0')}</strong> BENEFIT</span>
+              <span className="step-num"><strong>{String(i + 1).padStart(2, '0')}</strong> REASON</span>
               <span className="ico"><Icon name={s.icon} size={20} /></span>
               <div><h4><b>{s.bold}</b> {s.rest}</h4><p>{s.text}</p></div>
             </div>

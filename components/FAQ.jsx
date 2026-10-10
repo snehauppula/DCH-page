@@ -14,13 +14,13 @@ export default function FAQ() {
       <div className="container faq-grid">
         <Reveal x={-40} y={0}>
           <span className="chip"><Icon name="spark" size={16} /> Knowledge Base</span>
-          <h2 className="big2">Everything you need to know <span className="grad">before joining</span></h2>
-          <p className="muted">Clear answers to the questions creators ask most about the community, collaborations, brand deals and support.</p>
+          <h2 className="big2">Everything you need to know <span className="grad">before choosing us</span></h2>
+          <p className="muted">Clear answers to the questions businesses ask before choosing HFC software for their operations.</p>
           <div className="notes">
-            <div><b>Fast onboarding</b><span>Join and meet your hub in minutes</span></div>
-            <div><b>Friendly support</b><span>Mentors and moderators who care</span></div>
+            <div><b>Quick setup</b><span>Go live in 24–48 hours, end to end</span></div>
+            <div><b>Dedicated support</b><span>Real engineers, 7 days a week</span></div>
           </div>
-          <button className="btn btn-primary" onClick={() => openJoin()}>Still have questions? <Icon name="arrow" size={18} /></button>
+          <button className="btn btn-primary" onClick={() => openJoin()}>Book a Free Demo <Icon name="arrow" size={18} /></button>
         </Reveal>
         <Reveal className="faq-list" stagger={0.07} y={24}>
           {faqs.map((f, i) => {

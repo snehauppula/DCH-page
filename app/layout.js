@@ -15,8 +15,8 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-displa
 const lora = Lora({ subsets: ["latin"], style: "italic", variable: "--font-tagline" });
 
 export const metadata = {
-  title: "Digital Creators Hub – Where creators connect, collaborate & grow",
-  description: "A community hub for podcasters, gamers, video makers, photographers, artists and writers.",
+  title: "HFC Software – Cloud Kitchen, Restaurant & POS Billing Software",
+  description: "HFC Software builds cloud kitchen software, restaurant management, POS billing and custom software for modern food and digital businesses.",
 };
 
 // light is the default; the toggle stores an explicit choice

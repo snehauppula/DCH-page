@@ -19,14 +19,14 @@ export default function Hubs() {
     <section className="section" id="hubs">
       <div className="container">
         <Reveal className="head">
-          <span className="eyebrow center">CREATOR HUBS</span>
-          <h2>A hub for every <span className="grad">kind of creator</span></h2>
-                  </Reveal>
+          <span className="eyebrow center">OUR SOFTWARE PRODUCTS</span>
+          <h2>A solution for every <span className="grad">kind of business</span></h2>
+        </Reveal>
 
         <Reveal className="toolbar">
           <label className="search">
             <Icon name="search" size={18} />
-            <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search hubs — e.g. podcast, design…" aria-label="Search hubs" />
+            <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search services — e.g. cloud kitchen, POS…" aria-label="Search services" />
             {q && <button type="button" onClick={() => setQ("")} aria-label="Clear search"><Icon name="close" size={16} /></button>}
           </label>
           <div className="pills" role="tablist" aria-label="Filter by category">
@@ -38,7 +38,7 @@ export default function Hubs() {
             ))}
           </div>
         </Reveal>
-        <p className="count" aria-live="polite">{list.length} {list.length === 1 ? "hub" : "hubs"}</p>
+        <p className="count" aria-live="polite">{list.length} {list.length === 1 ? "service" : "services"}</p>
 
         <motion.div className="grid hubs-grid">
           <AnimatePresence mode="popLayout" initial={false}>
@@ -48,7 +48,7 @@ export default function Hubs() {
                   <div className="pc-top"><span className="pi"><Icon name={p.icon} size={22} /></span><span className="tag">{p.cat}</span></div>
                   <h4>{p.name}</h4>
                   <p>{p.blurb}</p>
-                  <span className="more">Explore <Icon name="arrow" size={16} /></span>
+                  <span className="more">Learn more <Icon name="arrow" size={16} /></span>
                 </Link>
               </motion.div>
             ))}
@@ -58,7 +58,7 @@ export default function Hubs() {
         {list.length === 0 && (
           <div className="empty">
             <Icon name="search" size={32} />
-            <p>No hubs match &ldquo;{q}&rdquo;.</p>
+            <p>No services match &ldquo;{q}&rdquo;.</p>
             <button className="btn btn-outline" onClick={() => { setQ(""); setCat("All"); }}>Reset filters</button>
           </div>
         )}

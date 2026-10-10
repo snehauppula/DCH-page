@@ -9,19 +9,19 @@ export default function About() {
       <div className="container about-grid">
         <Reveal x={-40} y={0}>
           <span className="eyebrow">ABOUT US</span>
-          <h2>A community built <span className="grad">by creators, for creators</span></h2>
-          <p className="muted about-p">Digital Creators Hub is a global, remote-first community where podcasters, gamers, video makers, photographers, artists and writers learn from each other, collaborate on projects and connect with brands that value their work.</p>
+          <h2>Built for food businesses, <span className="grad">by people who understand them</span></h2>
+          <p className="muted about-p">HFC Software is a product company focused on building reliable, affordable technology for cloud kitchens, restaurants and digital businesses across India. We combine deep industry knowledge with modern engineering to deliver software that just works.</p>
           <ul className="ticks">
-            <li><Icon name="tick" size={18} /> Remote-first, open to creators worldwide</li>
-            <li><Icon name="tick" size={18} /> Mentors, workshops and challenges every month</li>
-            <li><Icon name="tick" size={18} /> Verified brand partnerships</li>
+            <li><Icon name="tick" size={18} /> Purpose-built for the food & service industry</li>
+            <li><Icon name="tick" size={18} /> Onboarding, training and 7-day support included</li>
+            <li><Icon name="tick" size={18} /> GST-compliant, delivery-partner integrated</li>
           </ul>
         </Reveal>
         <Reveal className="numbers" x={40} y={0} stagger={0.1}>
-          <div><Counter to={10000} /><span>Creators</span></div>
-          <div><Counter to={12} /><span>Creator Hubs</span></div>
-          <div><Counter to={100} /><span>Brand Partners</span></div>
-          <div><Counter to={50} /><span>Monthly Events</span></div>
+          <div><Counter to={500} /><span>Businesses</span></div>
+          <div><Counter to={4} /><span>Products</span></div>
+          <div><Counter to={99} /><span>% Uptime</span></div>
+          <div><Counter to={7} /><span>Day Support</span></div>
         </Reveal>
       </div>
     </section>

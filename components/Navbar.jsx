@@ -9,7 +9,7 @@ import Icon from "./Icon";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
-  ["Home", "home"], ["Hubs", "hubs"], ["Why Us", "why"], ["About Us", "about"], ["Careers", "careers"], ["FAQs", "faqs"],
+  ["Home", "home"], ["Services", "hubs"], ["Why Us", "why"], ["About Us", "about"], ["Careers", "careers"], ["FAQs", "faqs"],
 ];
 
 export default function Navbar() {
@@ -44,8 +44,9 @@ export default function Navbar() {
     <header ref={ref} className={`nav${scrolled ? " scrolled" : ""}`}>
       <div className="nav-inner">
         <Link href="/" className="logo">
-          <LogoCircle className="logo-sm" />
-          <span className="logo-text">Digital Creators <span className="grad">Hub</span></span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/hfc-logo.png" alt="HFC" className="logo-sm" style={{ borderRadius: "50%", objectFit: "cover" }} />
+          <span className="logo-text">HFC <span className="grad">Software</span></span>
         </Link>
         <button className="burger" onClick={() => setOpen(!open)} aria-label="Menu"><Icon name={open ? "close" : "menu"} size={26} /></button>
         <nav className={`links${open ? " open" : ""}`} onClick={() => setOpen(false)}>
@@ -53,7 +54,7 @@ export default function Navbar() {
             <Link key={id} href={id === "home" ? "/" : `/#${id}`} className={active === id ? "active" : ""}>{label}</Link>
           ))}
           <ThemeToggle />
-          <button className="btn btn-primary" onClick={() => openJoin()}>Join the Hub</button>
+          <button className="btn btn-primary" onClick={() => openJoin()}>Get a Demo</button>
         </nav>
       </div>
     </header>

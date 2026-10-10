@@ -23,13 +23,13 @@ export default function HubDetail({ p }) {
             <span className="tag">{p.cat}</span>
             <h1>{p.name} <span className="grad">Hub</span></h1>
             <p className="lead">{p.blurb}</p>
-            <button className="btn btn-primary" onClick={() => open(p.name)}>Join this hub <Icon name="arrow" size={18} /></button>
+            <button className="btn btn-primary" onClick={() => open(p.name)}>Get Started <Icon name="arrow" size={18} /></button>
           </div>
         </div>
       </section>
       <section className="section alt">
         <div className="container">
-          <h2 style={{ marginBottom: "2rem" }}>What you get</h2>
+          <h2 style={{ marginBottom: "2rem" }}>What's Included</h2>
           <Reveal className="grid pd-feats" stagger={0.08} y={24}>
             {p.features.map((f) => (
               <div key={f} className="job">
@@ -41,7 +41,7 @@ export default function HubDetail({ p }) {
       </section>
       <section className="section">
         <div className="container">
-          <Reveal><h2 style={{ marginBottom: "2rem" }}>Explore <span className="grad">more hubs</span></h2></Reveal>
+          <Reveal><h2 style={{ marginBottom: "2rem" }}>Learn More <span className="grad">more hubs</span></h2></Reveal>
           <div className="grid hubs-grid">
             {more.map((h) => (
               <Link key={h.slug} href={`/hubs/${h.slug}`} className="pcard">
