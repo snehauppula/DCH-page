@@ -14,8 +14,9 @@ export default function WhyUs() {
         </Reveal>
 
         <Reveal className="why-list" stagger={0.1} y={24}>
-          {whyStats.map((s) => (
+          {whyStats.map((s, i) => (
             <div key={s.rest} className="why-card">
+              <span className="step-num"><strong>{String(i + 1).padStart(2, '0')}</strong> BENEFIT</span>
               <span className="ico"><Icon name={s.icon} size={20} /></span>
               <div><h4><b>{s.bold}</b> {s.rest}</h4><p>{s.text}</p></div>
             </div>

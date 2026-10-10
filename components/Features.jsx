@@ -14,8 +14,9 @@ export default function Features() {
           <h2>Powerful Tools. <span className="grad">Real Creator Impact.</span></h2>
         </Reveal>
         <Reveal className="features" stagger={0.08} y={30}>
-          {features.map((f) => (
+          {features.map((f, i) => (
             <div key={f.title} className="feat">
+              <span className="step-num"><strong>{String(i + 1).padStart(2, '0')}</strong> STEP</span>
               <span className="ico"><Icon name={f.icon} size={22} /></span>
               <div><h4>{f.title}</h4><p>{f.text}</p></div>
             </div>

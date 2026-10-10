@@ -1,4 +1,4 @@
-// Crops the round emblem out of /logo.jpg so it sits cleanly on the dark theme.
+// Crops the round emblem out of /logo.jpg so it sits cleanly on any theme.
 export default function LogoCircle({ className = "", style }) {
   return (
     <div className={`logo-circle ${className}`} style={style}>

@@ -19,7 +19,8 @@ export const metadata = {
   description: "A community hub for podcasters, gamers, video makers, photographers, artists and writers.",
 };
 
-const themeScript = `try{var t=localStorage.getItem("theme");if(!t)t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}`;
+// light is the default; the toggle stores an explicit choice
+const themeScript = `try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"light"}catch(e){document.documentElement.dataset.theme="light"}`;
 
 export default function RootLayout({ children }) {
   return (
