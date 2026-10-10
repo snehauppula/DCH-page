@@ -20,7 +20,7 @@ function HubRow({ p, i }) {
         onMouseEnter={() => iconRef.current?.startAnimation()}
         onMouseLeave={() => iconRef.current?.stopAnimation()}
       >
-        <span className="hubs-num">0{i + 1}</span>
+        <span className="hubs-num">{String(i + 1).padStart(2, "0")}</span>
         <div className="hubs-name">
           <h3>{p.name}</h3>
         </div>
@@ -45,8 +45,8 @@ export default function Hubs() {
     <section className="section" id="hubs">
       <div className="container">
         <Reveal className="head">
-          <span className="eyebrow center">Our software products</span>
-          <h2>A solution for every kind of business</h2>
+          <span className="eyebrow center">Our Services</span>
+          <h2>Everything your business needs, under one roof</h2>
         </Reveal>
 
         <div className="hubs-list">
