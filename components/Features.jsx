@@ -16,9 +16,10 @@ export default function Features() {
         <Reveal className="features" stagger={0.08} y={30}>
           {features.map((f, i) => (
             <div key={f.title} className="feat">
-              <span className="step-num"><strong>{String(i + 1).padStart(2, '0')}</strong> FEATURE</span>
+              <div className="feat-num">{String(i + 1).padStart(2, "0")}</div>
               <span className="ico"><Icon name={f.icon} size={22} /></span>
-              <div><h4>{f.title}</h4><p>{f.text}</p></div>
+              <h4>{f.title}</h4>
+              <p>{f.text}</p>
             </div>
           ))}
         </Reveal>

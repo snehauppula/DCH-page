@@ -6,6 +6,14 @@ import Reveal from "./Reveal";
 import Icon from "./Icon";
 import { hubs, categories } from "@/lib/data";
 
+// per-service accent colours (purple shades)
+const accents = {
+  "cloud-kitchen-software": "#7c3aed",
+  "restaurant-software":    "#6d28d9",
+  "pos-billing-software":   "#5b21b6",
+  "custom-software":        "#4c1d95",
+};
+
 export default function Hubs() {
   const [cat, setCat] = useState("All");
   const [q, setQ] = useState("");
@@ -43,12 +51,26 @@ export default function Hubs() {
         <motion.div className="grid hubs-grid">
           <AnimatePresence mode="popLayout" initial={false}>
             {list.map((p) => (
-              <motion.div key={p.slug} layout initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.92 }} transition={{ duration: 0.3 }}>
-                <Link href={`/hubs/${p.slug}`} className="pcard">
-                  <div className="pc-top"><span className="pi"><Icon name={p.icon} size={22} /></span><span className="tag">{p.cat}</span></div>
-                  <h4>{p.name}</h4>
-                  <p>{p.blurb}</p>
-                  <span className="more">Learn more <Icon name="arrow" size={16} /></span>
+              <motion.div key={p.slug} layout initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.94 }} transition={{ duration: 0.28 }}>
+                <Link
+                  href={`/hubs/${p.slug}`}
+                  className="pcard"
+                  style={{ "--card-accent": accents[p.slug] || "var(--accent)" }}
+                >
+                  <div className="pc-body">
+                    <div className="pc-top">
+                      <span className="pi"><Icon name={p.icon} size={22} /></span>
+                      <span className="tag">{p.cat}</span>
+                    </div>
+                    <h4>{p.name}</h4>
+                    <p>{p.blurb}</p>
+                    {p.features && (
+                      <ul className="card-features">
+                        {p.features.slice(0, 3).map((f) => <li key={f}>{f}</li>)}
+                      </ul>
+                    )}
+                    <span className="more">Learn more <Icon name="arrow" size={16} /></span>
+                  </div>
                 </Link>
               </motion.div>
             ))}
