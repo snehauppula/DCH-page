@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Icon from "./Icon";
+import HoverIcon from "./HoverIcon";
 import { getLenis } from "@/lib/lenis";
 
 export default function BackToTop() {
@@ -21,7 +21,7 @@ export default function BackToTop() {
       {show && (
         <motion.button className="totop" aria-label="Back to top" onClick={top}
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }}>
-          <Icon name="arrow" size={20} style={{ transform: "rotate(-90deg)" }} />
+          <HoverIcon name="arrow-up" size={20} />
         </motion.button>
       )}
     </AnimatePresence>

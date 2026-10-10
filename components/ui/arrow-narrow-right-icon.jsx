@@ -1,0 +1,68 @@
+import { forwardRef, useImperativeHandle } from "react";
+import { motion, useAnimate } from "motion/react";
+
+const ArrowNarrowRightIcon = forwardRef((
+  { size = 24, color = "currentColor", strokeWidth = 2, className = "" },
+  ref,
+) => {
+  const [scope, animate] = useAnimate();
+
+  const start = async () => {
+    await animate(
+      ".arrow-group",
+      { rotate: -45 },
+      { duration: 0.25, ease: [0.34, 1.56, 0.64, 1] },
+    );
+  };
+
+  const stop = () => {
+    animate(".arrow-group", { rotate: 0 }, { duration: 0.2, ease: "easeOut" });
+  };
+
+  useImperativeHandle(ref, () => {
+    return {
+      startAnimation: start,
+      stopAnimation: stop,
+    };
+  });
+
+  const handleHoverStart = () => {
+    start();
+  };
+
+  const handleHoverEnd = () => {
+    stop();
+  };
+
+  return (
+    <motion.div
+      ref={scope}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
+      className={`inline-flex cursor-pointer items-center justify-center ${className}`}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <motion.g className="arrow-group" style={{ transformOrigin: "50% 50%", transformBox: "fill-box" }}>
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M5 12l14 0" />
+          <path d="M15 16l4 -4" />
+          <path d="M15 8l4 4" />
+        </motion.g>
+      </svg>
+    </motion.div>
+  );
+});
+
+ArrowNarrowRightIcon.displayName = "ArrowNarrowRightIcon";
+
+export default ArrowNarrowRightIcon;

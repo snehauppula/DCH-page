@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { hubs } from "@/lib/data";
-import Icon from "./Icon";
+import HoverIcon from "./HoverIcon";
 
 export default function Footer() {
   return (
@@ -9,12 +9,12 @@ export default function Footer() {
         <div>
           <div className="foot-brand">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/hfc-logo.png" alt="HFC Software" className="logo-sm" style={{ borderRadius: "50%", objectFit: "cover" }} />
-            <h3>HFC <span className="grad">Software</span></h3>
+            <img src="/hfc-logo.png" alt="HFC Consultancy Services" className="logo-sm" style={{ borderRadius: "50%", objectFit: "cover" }} />
+            <h3>HFC Consultancy Services</h3>
           </div>
           <p className="fm">Smart software for restaurants, cloud kitchens &amp; digital businesses.</p>
-          <p><Icon name="mail" size={18} /> <a href="mailto:hello@hfcsoftware.com">hello@hfcsoftware.com</a></p>
-          <p><Icon name="globe" size={18} /> India-based · Serving nationwide</p>
+          <div className="foot-contact"><HoverIcon name="mail" size={18} /> <a href="mailto:hello@hfcsoftware.com">hello@hfcsoftware.com</a></div>
+          <div className="foot-contact"><HoverIcon name="globe" size={18} /> India-based · Serving nationwide</div>
         </div>
         <div>
           <h4>Quick Links</h4>
@@ -29,13 +29,13 @@ export default function Footer() {
           <p className="fu">Follow Us</p>
           <div className="social">
             {["facebook", "instagram", "x", "linkedin", "youtube", "mail"].map((n) => (
-              <a key={n} href={n === "mail" ? "mailto:hello@hfcsoftware.com" : "#"} aria-label={n}><Icon name={n} size={20} /></a>
+              <a key={n} href={n === "mail" ? "mailto:hello@hfcsoftware.com" : "#"} aria-label={n}><HoverIcon name={n} size={20} /></a>
             ))}
           </div>
         </div>
       </div>
       <div className="container foot-bottom">
-        <span>© 2026 HFC Software™. All rights reserved.</span>
+        <span>© 2026 HFC Consultancy Services™. All rights reserved.</span>
         <span>500+ Businesses &nbsp;|&nbsp; 4 Products &nbsp;|&nbsp; 99.9% Uptime</span>
         <span><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a></span>
       </div>

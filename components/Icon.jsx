@@ -2,7 +2,7 @@ import {
   Mic, Gamepad2, Video, Camera, PenLine, Music, BookOpen, Zap, Radio, Scissors, GraduationCap,
   Sun, Moon, Search, Megaphone, Users, ShieldCheck, Star, Headset, CircleCheck, Check, Target,
   Rocket, Heart, CloudUpload, Mail, MapPin, Globe, ArrowRight, ChevronDown, Sparkles,
-  MessageCircle, X, Menu,
+  MessageCircle, X, Menu, ExternalLink,
 } from "lucide-react";
 
 // shadcn/ui's icon set is lucide — names below are the app's existing icon keys.
@@ -12,7 +12,7 @@ const L = {
   search: Search, megaphone: Megaphone, users: Users, shield: ShieldCheck, star: Star, headset: Headset,
   check: CircleCheck, tick: Check, target: Target, rocket: Rocket, heart: Heart, cloud: CloudUpload,
   mail: Mail, pin: MapPin, globe: Globe, arrow: ArrowRight, chevron: ChevronDown, spark: Sparkles,
-  chat: MessageCircle, close: X, x: X, menu: Menu,
+  chat: MessageCircle, close: X, x: X, menu: Menu, external: ExternalLink,
 };
 
 // lucide v1 ships no brand logos, so these four stay as inline paths.

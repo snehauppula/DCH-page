@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { useJoin } from "./JoinProvider";
 import LogoCircle from "./LogoCircle";
-import Icon from "./Icon";
+import HoverIcon from "./HoverIcon";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
@@ -46,9 +46,9 @@ export default function Navbar() {
         <Link href="/" className="logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/hfc-logo.png" alt="HFC" className="logo-sm" style={{ borderRadius: "50%", objectFit: "cover" }} />
-          <span className="logo-text">HFC <span className="grad">Software</span></span>
+          <span className="logo-text">HFC Consultancy Services</span>
         </Link>
-        <button className="burger" onClick={() => setOpen(!open)} aria-label="Menu"><Icon name={open ? "close" : "menu"} size={26} /></button>
+        <button className="burger" onClick={() => setOpen(!open)} aria-label="Menu"><HoverIcon name={open ? "close" : "menu"} size={26} /></button>
         <nav className={`links${open ? " open" : ""}`} onClick={() => setOpen(false)}>
           {links.map(([label, id]) => (
             <Link key={id} href={id === "home" ? "/" : `/#${id}`} className={active === id ? "active" : ""}>{label}</Link>

@@ -8,15 +8,15 @@ export default function Careers() {
     <section className="section alt" id="careers">
       <div className="container">
         <Reveal className="head">
-          <span className="eyebrow center">CAREERS</span>
-          <h2>Grow <span className="grad">with us</span></h2>
+          <span className="eyebrow center">Careers</span>
+          <h2>Grow with us</h2>
           <p className="muted">Join our growing team building software that powers real businesses.</p>
         </Reveal>
         <Reveal className="grid jobs" stagger={0.1} y={24}>
           {jobs.map((j) => (
             <div key={j.title} className="job">
               <h4>{j.title}</h4><p>{j.place}</p>
-              <a href={`mailto:hello@hfcsoftware.com?subject=${encodeURIComponent("Application: " + j.title)}`}>Apply <Icon name="arrow" size={16} /></a>
+              <a href={`mailto:hello@hfcsoftware.com?subject=${encodeURIComponent("Application: " + j.title)}`}>Apply</a>
             </div>
           ))}
         </Reveal>
