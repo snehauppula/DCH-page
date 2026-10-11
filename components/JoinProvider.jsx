@@ -33,12 +33,14 @@ export default function JoinProvider({ children }) {
   const [show, setShow] = useState(false);
   const [hub, setHub] = useState(hubs[0].name);
   const [done, setDone] = useState(false);
+  const [waLink, setWaLink] = useState("");
   const lastFocus = useRef(null);
   const boxRef = useRef(null);
 
   const open = (h) => {
     if (h) setHub(h);
     setDone(false);
+    setWaLink("");
     lastFocus.current = document.activeElement;
     setShow(true);
   };
@@ -74,15 +76,32 @@ export default function JoinProvider({ children }) {
   async function submit(values, { setStatus, resetForm }) {
     setStatus(undefined);
     try {
-      const r = await fetch("/api/join", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(schema.cast(values)) });
-      const j = await r.json();
-      if (!r.ok) throw new Error(j.error || "Something went wrong");
+      fetch("/api/join", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(schema.cast(values)),
+      }).catch(() => {});
+
+      const msg = [
+        "👋 *New Demo Request - HFC Consultancy Services*",
+        "",
+        `👤 *Name:* ${values.name}`,
+        `📧 *Email:* ${values.email}`,
+        values.handle ? `🏢 *Business:* ${values.handle}` : null,
+        `🚀 *Interested in:* ${values.hub}`,
+        "",
+        "Please schedule a demo for us."
+      ].filter(Boolean).join("\n");
+
+      const waUrl = `https://wa.me/919912799855?text=${encodeURIComponent(msg)}`;
+      setWaLink(waUrl);
       resetForm();
       setDone(true);
+      toast.success("Demo request submitted!", { description: "Opening WhatsApp to connect with our team..." });
+
       setTimeout(() => {
-        close();
-        toast.success("Demo request sent!", { description: "We'll reach out within 24 hours." });
-      }, 1800);
+        window.location.href = waUrl;
+      }, 700);
     } catch (err) {
       setStatus(err.message || "Network error — please try again.");
     }
@@ -95,23 +114,31 @@ export default function JoinProvider({ children }) {
         <AnimatePresence>
           {show && (
             <motion.div className="modal" data-lenis-prevent initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 0.18 } }} exit={{ opacity: 0, transition: { duration: 0.15 } }} onMouseDown={(e) => e.target === e.currentTarget && close()}>
-              <motion.div ref={boxRef} className="modal-box" role="dialog" aria-modal="true" aria-labelledby="join-title" initial={{ y: 32, opacity: 0, scale: 0.97 }} animate={{ y: 0, opacity: 1, scale: 1, transition: { type: "spring", stiffness: 380, damping: 30 } }} exit={{ y: 16, opacity: 0, scale: 0.98, transition: { duration: 0.18 } }}>
-                <button type="button" className="x" onClick={close} aria-label="Close"><HoverIcon name="close" size={22} /></button>
+              <motion.div ref={boxRef} className="modal-box" role="dialog" aria-modal="true" aria-labelledby="join-title" initial={{ y: 24, opacity: 0, scale: 0.98 }} animate={{ y: 0, opacity: 1, scale: 1, transition: { type: "spring", stiffness: 350, damping: 28 } }} exit={{ y: 16, opacity: 0, scale: 0.98, transition: { duration: 0.18 } }}>
+                <div className="modal-header">
+                  <div>
+                    <h3 id="join-title">Request a Demo</h3>
+                    <p className="muted modal-sub">Tell us about your business and we&apos;ll get back within 24 hours.</p>
+                  </div>
+                  <button type="button" className="x" onClick={close} aria-label="Close"><HoverIcon name="close" size={20} /></button>
+                </div>
                 {done ? (
                   <div className="success">
                     <CheckedIcon size={64} color="var(--green)" />
-                    <h3 id="join-title">Demo request sent!</h3>
-                    <p className="muted">Thanks — our team will reach out within 24 hours to schedule your demo.</p>
-                    <button type="button" className="btn btn-primary" onClick={close}>Back to site</button>
+                    <h3>Demo request sent!</h3>
+                    <p className="muted">Redirecting you to WhatsApp to connect with our team...</p>
+                    <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ background: "#25D366", borderColor: "#25D366", color: "#ffffff", gap: ".6rem" }}>
+                      <span>Open WhatsApp</span>
+                      <HoverIcon name="external" size={16} />
+                    </a>
+                    <button type="button" className="btn btn-outline" style={{ marginTop: ".3rem" }} onClick={close}>Close</button>
                   </div>
                 ) : (
                   <Formik initialValues={{ name: "", email: "", handle: "", hub }} validationSchema={schema} onSubmit={submit}>
                     {({ isSubmitting, status, errors, touched }) => (
                       <Form noValidate className="join-form">
-                        <h3 id="join-title">Request a Demo</h3>
-                        <p className="muted">Tell us about your business and we&apos;ll get back to you within 24 hours.</p>
                         <FieldRow label="Name" name="name">
-                          <Field autoFocus name="name" placeholder="Your name" autoComplete="name" aria-invalid={!!(touched.name && errors.name)} />
+                          <Field name="name" placeholder="Your name" autoComplete="name" aria-invalid={!!(touched.name && errors.name)} />
                         </FieldRow>
                         <FieldRow label="Email" name="email">
                           <Field name="email" type="email" placeholder="you@example.com" autoComplete="email" aria-invalid={!!(touched.email && errors.email)} />

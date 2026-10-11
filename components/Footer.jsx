@@ -13,8 +13,34 @@ export default function Footer() {
             <h3>HFC Consultancy Services</h3>
           </div>
           <p className="fm">Smart software for restaurants, cloud kitchens &amp; digital businesses.</p>
-          <div className="foot-contact"><HoverIcon name="mail" size={18} /> <a href="mailto:hello@hfcsoftware.com">hello@hfcsoftware.com</a></div>
-          <div className="foot-contact"><HoverIcon name="globe" size={18} /> India-based · Serving nationwide</div>
+          <div className="foot-contact">
+            <HoverIcon name="phone" size={18} />
+            <a href="tel:+919912799855">+91 99127 99855</a>
+          </div>
+          <div className="foot-contact">
+            <HoverIcon name="mail" size={18} />
+            <a href="mailto:hello@hfcsoftware.com">hello@hfcsoftware.com</a>
+          </div>
+          <div className="foot-contact">
+            <HoverIcon name="map-pin" size={18} />
+            <div>
+              <span>467, Ayyappa Society, Siddhi Vinayak Nagar, Madhapur, Hyderabad, Telangana 500081, India</span>
+              <div>
+                <a
+                  href="https://maps.google.com/maps/search/Digital%20Creators%20Hub/@17.4527,78.3902,17z?hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="foot-map-btn"
+                >
+                  <HoverIcon name="external" size={13} /> View on Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="foot-contact">
+            <HoverIcon name="globe" size={18} />
+            <span>Serving Businesses Nationwide</span>
+          </div>
         </div>
         <div>
           <h4>Quick Links</h4>

@@ -16,32 +16,61 @@ export default function Navbar() {
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
   const { open: openJoin } = useJoin();
   const ref = useRef(null);
 
   useLayoutEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = gsap.from(ref.current, { y: -90, duration: 0.7, ease: "power3.out" });
+    const t = gsap.from(ref.current, {
+      y: -90,
+      duration: 0.7,
+      ease: "power3.out",
+      clearProps: "transform",
+    });
     return () => t.kill();
   }, []);
 
   useEffect(() => {
-    if (pathname !== "/") { setActive(""); return; }
+    let lastY = window.scrollY;
+    const threshold = 8;
+
     const onScroll = () => {
-      setScrolled(window.scrollY > 10);
-      const y = window.scrollY + 160;
-      let cur = "home";
-      links.forEach(([, id]) => { const el = document.getElementById(id); if (el && el.offsetTop <= y) cur = id; });
-      setActive(cur);
+      const curY = window.scrollY;
+      setScrolled(curY > 10);
+
+      // Active section highlight (on home page)
+      if (pathname === "/") {
+        const y = curY + 160;
+        let cur = "home";
+        links.forEach(([, id]) => {
+          const el = document.getElementById(id);
+          if (el && el.offsetTop <= y) cur = id;
+        });
+        setActive(cur);
+      }
+
+      // Collapse after scrolling down, appear when scrolling up
+      if (curY <= 60) {
+        setHidden(false);
+      } else if (!open && Math.abs(curY - lastY) > threshold) {
+        if (curY > lastY) {
+          setHidden(true); // scrolling down -> collapse
+        } else {
+          setHidden(false); // scrolling up -> appear
+        }
+      }
+      lastY = curY;
     };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+  }, [pathname, open]);
 
   return (
-    <header ref={ref} className={`nav${scrolled ? " scrolled" : ""}`}>
+    <header ref={ref} className={`nav${scrolled ? " scrolled" : ""}${hidden && !open ? " nav-hidden" : ""}`}>
       <div className="nav-inner">
         <Link href="/" className="logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,6 +82,10 @@ export default function Navbar() {
           {links.map(([label, id]) => (
             <Link key={id} href={id === "home" ? "/" : `/#${id}`} className={active === id ? "active" : ""}>{label}</Link>
           ))}
+          <a href="tel:+919912799855" className="nav-phone-link">
+            <HoverIcon name="phone" size={15} />
+            <span>+91 99127 99855</span>
+          </a>
           <ThemeToggle />
           <button className="btn btn-primary" onClick={() => openJoin()}>Get a Demo</button>
         </nav>

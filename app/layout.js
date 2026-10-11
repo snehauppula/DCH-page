@@ -8,6 +8,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 import SmoothScroll from "@/components/SmoothScroll";
 import { Toaster } from "@/components/ui/sonner";
+import InitialLoader from "@/components/InitialLoader";
 
 // same type system as the HFC Billing site: Playfair display, Montserrat brand, Inter body, Lora tagline
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable} ${montserrat.variable} ${playfair.variable} ${lora.variable}`} suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
       <body>
+        <InitialLoader />
         <a href="#main" className="skip">Skip to content</a>
         <JoinProvider>
           <SmoothScroll />
