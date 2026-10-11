@@ -1,20 +1,20 @@
 "use client";
 import Reveal from "./Reveal";
 import Counter from "./Counter";
-import Icon from "./Icon";
+import HoverIcon from "./HoverIcon";
 
 export default function About() {
   return (
     <section className="section" id="about">
       <div className="container about-grid">
         <Reveal x={-40} y={0}>
-          <span className="eyebrow">ABOUT US</span>
-          <h2>Built for food businesses, <span className="grad">by people who understand them</span></h2>
-          <p className="muted about-p">HFC Software is a product company focused on building reliable, affordable technology for cloud kitchens, restaurants and digital businesses across India. We combine deep industry knowledge with modern engineering to deliver software that just works.</p>
+          <span className="eyebrow">About us</span>
+          <h2>Built for food businesses, by people who understand them</h2>
+          <p className="muted about-p">HFC Consultancy Services is a product company focused on building reliable, affordable technology for cloud kitchens, restaurants and digital businesses across India. We combine deep industry knowledge with modern engineering to deliver software that just works.</p>
           <ul className="ticks">
-            <li><Icon name="tick" size={18} /> Purpose-built for the food & service industry</li>
-            <li><Icon name="tick" size={18} /> Onboarding, training and 7-day support included</li>
-            <li><Icon name="tick" size={18} /> GST-compliant, delivery-partner integrated</li>
+            <li><HoverIcon name="tick" size={18} /> Purpose-built for the food & service industry</li>
+            <li><HoverIcon name="tick" size={18} /> Onboarding, training and 7-day support included</li>
+            <li><HoverIcon name="tick" size={18} /> GST-compliant, delivery-partner integrated</li>
           </ul>
         </Reveal>
         <Reveal className="numbers" x={40} y={0} stagger={0.1}>

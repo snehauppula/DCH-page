@@ -7,6 +7,7 @@ import FloatingChat from "@/components/FloatingChat";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackToTop from "@/components/BackToTop";
 import SmoothScroll from "@/components/SmoothScroll";
+import { Toaster } from "@/components/ui/sonner";
 
 // same type system as the HFC Billing site: Playfair display, Montserrat brand, Inter body, Lora tagline
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
@@ -15,8 +16,9 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-displa
 const lora = Lora({ subsets: ["latin"], style: "italic", variable: "--font-tagline" });
 
 export const metadata = {
-  title: "HFC Software – Cloud Kitchen, Restaurant & POS Billing Software",
-  description: "HFC Software builds cloud kitchen software, restaurant management, POS billing and custom software for modern food and digital businesses.",
+  title: "HFC Consultancy Services – Cloud Kitchen, Restaurant & POS Billing Software",
+  description: "HFC Consultancy Services builds cloud kitchen software, restaurant management, POS billing and custom software for modern food and digital businesses.",
+  icons: { icon: "/icon.png" },
 };
 
 // light is the default; the toggle stores an explicit choice
@@ -36,6 +38,7 @@ export default function RootLayout({ children }) {
           <Footer />
           <BackToTop />
           <FloatingChat />
+          <Toaster />
         </JoinProvider>
       </body>
     </html>

@@ -1,6 +1,6 @@
 "use client";
 import Reveal from "./Reveal";
-import Icon from "./Icon";
+import HoverIcon from "./HoverIcon";
 import { whyStats } from "@/lib/data";
 
 export default function WhyUs() {
@@ -8,16 +8,15 @@ export default function WhyUs() {
     <section className="section why" id="why">
       <div className="container why-grid">
         <Reveal x={-40} y={0}>
-          <span className="eyebrow">WHY BUSINESSES TRUST US</span>
-          <h2 className="big">Why Choose <span className="grad">HFC Software?</span></h2>
+          <span className="eyebrow">Why businesses trust us</span>
+          <h2 className="big">Why choose HFC Consultancy Services?</h2>
           <p className="muted why-p">We&apos;ve spent years building software specifically for the food and service industry — not generic tools repurposed for restaurants, but purpose-built products that understand your workflow.</p>
         </Reveal>
 
         <Reveal className="why-list" stagger={0.1} y={24}>
           {whyStats.map((s, i) => (
             <div key={s.rest} className="why-card">
-              <span className="step-num"><strong>{String(i + 1).padStart(2, '0')}</strong> REASON</span>
-              <span className="ico"><Icon name={s.icon} size={20} /></span>
+              <span className="ico"><HoverIcon name={s.icon} size={20} /></span>
               <div><h4><b>{s.bold}</b> {s.rest}</h4><p>{s.text}</p></div>
             </div>
           ))}

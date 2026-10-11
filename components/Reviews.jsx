@@ -15,7 +15,7 @@ function Card({ r, hidden }) {
   return (
     <div className="rev" aria-hidden={hidden || undefined}>
       <div><Stars n={r.stars} /><p>{r.text}</p></div>
-      <div className="who"><span className="av" style={{ background: r.color }}>{r.name[0]}</span><div><b>{r.name}</b><small>Creator</small></div></div>
+      <div className="who"><span className="av" style={{ background: r.color }}>{r.name[0]}</span><div><b>{r.name}</b><small>Business owner</small></div></div>
     </div>
   );
 }
@@ -26,12 +26,12 @@ export default function Reviews() {
       <div className="container">
         <Reveal className="rev-head">
           <div>
-            <h2>What creators <span className="grad">say</span></h2>
+            <h2>What our clients say</h2>
             <p className="rating"><Stars n={5} /> <b>4.9</b> <span className="muted">average community rating</span></p>
           </div>
         </Reveal>
       </div>
-      <div className="marquee" tabIndex={0} aria-label="Creator testimonials, hover to pause">
+      <div className="marquee" tabIndex={0} aria-label="Client testimonials, hover to pause">
         <div className="rev-track">
           {reviews.map((r, i) => <Card key={i} r={r} />)}
           {reviews.map((r, i) => <Card key={"d" + i} r={r} hidden />)}

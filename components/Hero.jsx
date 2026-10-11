@@ -2,7 +2,8 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Counter from "./Counter";
-import Icon from "./Icon";
+import HoverIcon from "./HoverIcon";
+import ArrowNarrowRightIcon from "./ui/arrow-narrow-right-icon";
 import { useJoin } from "./JoinProvider";
 
 const chips = [
@@ -15,6 +16,7 @@ const chips = [
 export default function Hero() {
   const { open } = useJoin();
   const root = useRef(null);
+  const arrowRef = useRef(null);
 
   useLayoutEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -31,11 +33,19 @@ export default function Hero() {
     <section className="hero" id="home" ref={root}>
       <div className="container hero-grid">
         <div className="hero-copy">
-          <span className="eyebrow">SMART SOFTWARE FOR MODERN BUSINESS</span>
-          <h1>Powerful software for <span className="grad">restaurants & digital businesses.</span></h1>
-          <p className="lead">HFC delivers cloud kitchen software, restaurant management, POS billing and custom software — everything your business needs to run faster and smarter.</p>
+          <span className="eyebrow">HFC Consultancy Services · Restaurant &amp; digital business</span>
+          <h1>The software your <span className="grad">restaurant</span> actually needs.</h1>
+          <p className="lead">Billing, kitchen display, POS and custom tools.<br />Built for restaurants across India.</p>
           <div className="cta-row">
-            <button className="btn btn-primary" onClick={() => open()}>Request a Demo <Icon name="arrow" size={18} /></button>
+            <button
+              className="btn btn-primary btn-icon-pill"
+              onClick={() => open()}
+              onMouseEnter={() => arrowRef.current?.startAnimation()}
+              onMouseLeave={() => arrowRef.current?.stopAnimation()}
+            >
+              <span>Request a Demo</span>
+              <span className="btn-circle"><ArrowNarrowRightIcon ref={arrowRef} size={16} /></span>
+            </button>
             <a href="#hubs" className="btn btn-outline">Our Services</a>
           </div>
           <div className="hero-stats">
@@ -48,10 +58,10 @@ export default function Hero() {
         <div className="hero-visual">
           <div className="hero-logo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/hfc-logo.png" alt="HFC Software" style={{ width: "84%", borderRadius: "50%", display: "block", margin: "auto" }} />
+            <img src="/hfc-logo.png" alt="HFC Consultancy Services" style={{ width: "84%", borderRadius: "50%", display: "block", margin: "auto" }} />
           </div>
           {chips.map((c) => (
-            <div key={c.label} className="chipf" style={c.s}><Icon name={c.icon} size={18} /> {c.label}</div>
+            <div key={c.label} className="chipf" style={c.s}><HoverIcon name={c.icon} size={18} /> {c.label}</div>
           ))}
         </div>
       </div>
