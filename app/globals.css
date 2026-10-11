@@ -106,9 +106,9 @@ h2{font-size:clamp(1.9rem,3.2vw,3.4rem);line-height:1.15;letter-spacing:-.01em}
 .chipf svg{color:var(--accent-ink)}
 
 /* ── services grid ─────────────────────────────── */
-.services-section{background:var(--alt)}
+.services-section{background:var(--bg);border-top:1px solid var(--bd)}
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem}
-.svc-card{background:var(--bg);border-radius:16px;padding:1.6rem;border:1px solid var(--border);transition:box-shadow .2s;height:100%}
+.svc-card{background:var(--surface);border-radius:16px;padding:1.6rem;border:1px solid var(--bd);transition:box-shadow .2s;height:100%}
 .svc-card:hover{box-shadow:0 6px 28px rgba(120,60,200,.1)}
 .svc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
 .svc-title{font-size:1rem;font-weight:700;margin-bottom:.75rem;color:var(--ink)}

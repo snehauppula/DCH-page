@@ -9,6 +9,8 @@ const catStyle = {
   Cloud:      { bg: "#dcfce7", accent: "#16a34a", grad: "135deg,#bbf7d0 0%,#4ade80 100%" },
   Restaurant: { bg: "#fee2e2", accent: "#dc2626", grad: "135deg,#fecaca 0%,#f87171 100%" },
   POS:        { bg: "#fef3c7", accent: "#d97706", grad: "135deg,#fde68a 0%,#fbbf24 100%" },
+  Delivery:   { bg: "#ecfdf5", accent: "#059669", grad: "135deg,#a7f3d0 0%,#34d399 100%" },
+  Ordering:   { bg: "#ecfdf5", accent: "#059669", grad: "135deg,#a7f3d0 0%,#34d399 100%" },
   Tech:       { bg: "#dbeafe", accent: "#2563eb", grad: "135deg,#bfdbfe 0%,#60a5fa 100%" },
   AI:         { bg: "#f3e8ff", accent: "#7c3aed", grad: "135deg,#ddd6fe 0%,#a78bfa 100%" },
   Platform:   { bg: "#fef9c3", accent: "#ca8a04", grad: "135deg,#fef08a 0%,#facc15 100%" },

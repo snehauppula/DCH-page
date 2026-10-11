@@ -18,6 +18,7 @@ const lora = Lora({ subsets: ["latin"], style: "italic", variable: "--font-tagli
 export const metadata = {
   title: "HFC Consultancy Services – Cloud Kitchen, Restaurant & POS Billing Software",
   description: "HFC Consultancy Services builds cloud kitchen software, restaurant management, POS billing and custom software for modern food and digital businesses.",
+  icons: { icon: "/icon.png" },
 };
 
 // light is the default; the toggle stores an explicit choice
