@@ -19,7 +19,7 @@ export default function Services() {
             <Reveal key={g.category}>
               <div className="svc-card">
                 <div className="svc-icon" style={{ background: g.color }}>
-                  <HoverIcon name={g.icon} size={22} color="#3b0764" />
+                  <HoverIcon name={g.icon} size={22} color="#dc2626" />
                 </div>
                 <h3 className="svc-title">{g.category}</h3>
                 <ul className="svc-list">

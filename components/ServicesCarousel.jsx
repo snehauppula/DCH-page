@@ -6,19 +6,19 @@ import HoverIcon from "./HoverIcon";
 import { useJoin } from "./JoinProvider";
 
 const catStyle = {
-  Cloud:      { bg: "#dcfce7", accent: "#16a34a", grad: "135deg,#bbf7d0 0%,#4ade80 100%" },
-  Restaurant: { bg: "#fee2e2", accent: "#dc2626", grad: "135deg,#fecaca 0%,#f87171 100%" },
-  POS:        { bg: "#fef3c7", accent: "#d97706", grad: "135deg,#fde68a 0%,#fbbf24 100%" },
-  Delivery:   { bg: "#ecfdf5", accent: "#059669", grad: "135deg,#a7f3d0 0%,#34d399 100%" },
-  Ordering:   { bg: "#ecfdf5", accent: "#059669", grad: "135deg,#a7f3d0 0%,#34d399 100%" },
-  Tech:       { bg: "#dbeafe", accent: "#2563eb", grad: "135deg,#bfdbfe 0%,#60a5fa 100%" },
-  AI:         { bg: "#f3e8ff", accent: "#7c3aed", grad: "135deg,#ddd6fe 0%,#a78bfa 100%" },
-  Platform:   { bg: "#fef9c3", accent: "#ca8a04", grad: "135deg,#fef08a 0%,#facc15 100%" },
-  Marketing:  { bg: "#fce7f3", accent: "#db2777", grad: "135deg,#fbcfe8 0%,#f472b6 100%" },
-  Setup:      { bg: "#d1fae5", accent: "#059669", grad: "135deg,#a7f3d0 0%,#34d399 100%" },
-  Consulting: { bg: "#e0e7ff", accent: "#4f46e5", grad: "135deg,#c7d2fe 0%,#818cf8 100%" },
-  Training:   { bg: "#ffedd5", accent: "#ea580c", grad: "135deg,#fed7aa 0%,#fb923c 100%" },
-  Custom:     { bg: "#dcfce7", accent: "#15803d", grad: "135deg,#bbf7d0 0%,#4ade80 100%" },
+  Cloud:      { bg: "#fef2f2", accent: "#e11d48", grad: "135deg,#ffe4e6 0%,#f43f5e 100%" },
+  Restaurant: { bg: "#fee2e2", accent: "#dc2626", grad: "135deg,#fecaca 0%,#ef4444 100%" },
+  POS:        { bg: "#fff1f2", accent: "#be123c", grad: "135deg,#ffe4e6 0%,#e11d48 100%" },
+  Delivery:   { bg: "#fee2e2", accent: "#b91c1c", grad: "135deg,#fecaca 0%,#dc2626 100%" },
+  Ordering:   { bg: "#fee2e2", accent: "#b91c1c", grad: "135deg,#fecaca 0%,#dc2626 100%" },
+  Tech:       { bg: "#fee2e2", accent: "#991b1b", grad: "135deg,#fee2e2 0%,#dc2626 100%" },
+  AI:         { bg: "#fef2f2", accent: "#dc2626", grad: "135deg,#fecaca 0%,#ef4444 100%" },
+  Platform:   { bg: "#fff1f2", accent: "#e11d48", grad: "135deg,#ffe4e6 0%,#f43f5e 100%" },
+  Marketing:  { bg: "#fee2e2", accent: "#b91c1c", grad: "135deg,#fecaca 0%,#dc2626 100%" },
+  Setup:      { bg: "#fef2f2", accent: "#dc2626", grad: "135deg,#fecaca 0%,#ef4444 100%" },
+  Consulting: { bg: "#fee2e2", accent: "#991b1b", grad: "135deg,#fee2e2 0%,#b91c1c 100%" },
+  Training:   { bg: "#fff1f2", accent: "#be123c", grad: "135deg,#ffe4e6 0%,#e11d48 100%" },
+  Custom:     { bg: "#fee2e2", accent: "#dc2626", grad: "135deg,#fecaca 0%,#ef4444 100%" },
 };
 
 const keyStats = [
