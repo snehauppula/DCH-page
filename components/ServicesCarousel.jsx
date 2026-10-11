@@ -94,10 +94,15 @@ export default function ServicesCarousel() {
         {/* Big card */}
         <div className={`sc-card${fade ? " sc-fade-in" : " sc-fade-out"}`}>
           {/* Visual panel */}
-          <div className="sc-visual" style={{ background: style.bg }}>
-            <div className="sc-visual-icon" style={{ background: "rgba(255,255,255,.6)" }}>
-              <HoverIcon name={current.icon} size={64} color={style.accent} />
-            </div>
+          <div className="sc-visual" style={current.image ? {} : { background: style.bg }}>
+            {current.image ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img src={current.image} alt={current.name} className="sc-visual-img" />
+            ) : (
+              <div className="sc-visual-icon" style={{ background: "rgba(255,255,255,.6)" }}>
+                <HoverIcon name={current.icon} size={64} color={style.accent} />
+              </div>
+            )}
           </div>
 
           {/* Content */}
